@@ -30,11 +30,10 @@ public abstract class Operation {
 
 	@Override
 	public String toString() {
-		return "Operation date=" + date + ", montant=" + montant + "type = " + getType();
+		return "Operation date=" + date + ", montant =" + montant + "type = " + getType();
 	}
 	
 	public abstract String getType();
 	
-	
-	
+			
 }
