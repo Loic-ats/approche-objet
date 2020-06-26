@@ -17,7 +17,7 @@ public class ConversionNombre {
 		
 				
 		System.out.println("Le résultat max est:" + Integer.max(a, b));
-		
+				
 	}
 
 }
