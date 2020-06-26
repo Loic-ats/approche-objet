@@ -24,13 +24,13 @@ public class Personne {
 	
 	public String affichage () {
 			
-		return (nom.toUpperCase() + " " + prenom.toUpperCase());
+		return (nom.toUpperCase() + " " + prenom);
 		
 	}
 	
 	// Création d'une méthode pour modifier le nom d'une personne
 	
-	public void modifnom (String mod) {
+	public void setnom (String mod) {
 		
 		this.nom = mod;
 			
@@ -38,26 +38,26 @@ public class Personne {
 	
 	// Création d'une méthode pour modifier le prénom
 	
-	public void modifprenom(String mod2) {
+	public void setprenom(String mod2) {
 		
 		this.prenom=mod2;
 	}
 	
-	public void modifadresse (AdressePostale mod3) {
+	public void setadresse (AdressePostale mod3) {
 		
 		this.adresse = mod3;		
 	}
 	
 	// Méthode qui retourne le nom en type string
 	
-	public String viewname () {
+	public String getname () {
 	
 		return nom;
 	}
 	
 	// Méthode qui retourne le prenom en type string
 	
-	public String viewprenom () {
+	public String getprenom () {
 	
 		return prenom;
 		
@@ -65,7 +65,7 @@ public class Personne {
 	
 	// Méthode qui retourne l'adresse postale
 	
-	public AdressePostale viewadresse() {
+	public AdressePostale getadresse() {
 		
 		return adresse;
 		

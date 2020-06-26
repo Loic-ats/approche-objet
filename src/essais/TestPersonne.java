@@ -22,14 +22,14 @@ public class TestPersonne {
 		String resultat = perso1.affichage();
 		System.out.println(resultat);
 		
-		perso1.modifnom ("Jean");
-		perso1.modifprenom("Paul");
-		perso1.modifadresse(adresse1);
+		perso1.setnom ("Jean");
+		perso1.setprenom("Paul");
+		perso1.setadresse(adresse1);
 		
 		resultat = perso1.affichage();
 		System.out.println(resultat);
 		
-		System.out.println(perso1.viewadresse());
+		System.out.println(perso1.getadresse());
 	}
 
 }
