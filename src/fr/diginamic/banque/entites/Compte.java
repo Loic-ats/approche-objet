@@ -33,8 +33,7 @@ public class Compte {
 		public String toString() {
 			return "Compte [numerodecompte = " + numerodecompte + ", soldeducompte = " + soldeducompte + "]";
 		}
-	
-			
+
 		
 	}
 
