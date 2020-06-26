@@ -28,8 +28,13 @@ public class Compte {
 		public void setSoldeducompte(int soldeducompte) {
 			this.soldeducompte = soldeducompte;
 		}
-		
 
+		@Override
+		public String toString() {
+			return "Compte [numerodecompte = " + numerodecompte + ", soldeducompte = " + soldeducompte + "]";
+		}
+	
+			
 		
 	}
 
