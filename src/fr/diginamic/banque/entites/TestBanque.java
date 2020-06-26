@@ -12,7 +12,7 @@ public class TestBanque {
 		
 		//Dans la méthode println, il invoque la méthode toString donc on est pas obligé de la rappeler dans le println
 		
-		
+		//Idem in [] tab = new int [4];
 		Compte[] tabCompte = new Compte[2];
 		
 		tabCompte [0] =  new Compte(52525552, 152000);
