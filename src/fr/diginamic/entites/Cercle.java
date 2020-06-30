@@ -14,14 +14,14 @@ public class Cercle {
 		
 		public double perimetre() {
 			
-			return rayon*rayon; 
+			return rayon*2*Math.PI; 
 		}
 		
 		// Méthode qui renvoie la surface
 		
 		public double surface() {
 			
-			return rayon* rayon *3.14; 
+			return rayon* rayon * Math.PI; 
 		}
 		
 		

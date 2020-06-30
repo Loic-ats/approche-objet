@@ -24,7 +24,6 @@ public class Personne {
 	}
 
 
-
 	public String getNom() {
 		return nom;
 	}

@@ -1,5 +1,6 @@
 package fr.diginamic.essais;
 
+import fr.diginamic.utils.CercleFactory;
 import fr.diginamic.entites.Cercle;
 
 public class TestCercle {
@@ -7,6 +8,8 @@ public class TestCercle {
 
 	public static void main(String[] args) {
 
+		Cercle cercle0 = CercleFactory.BuildCercle(3);
+		
 		Cercle cercle1 = new Cercle (2);
 		Cercle cercle2 = new Cercle (4);
 
@@ -27,6 +30,7 @@ public class TestCercle {
 		System.out.println(perimetre2);
 		System.out.println(surface1);
 		System.out.println(surface2);
+		System.out.println("Le cercle de rayon" + cercle0.getRayon() + "et de perimetre" + cercle0.perimetre());
 		
 		
 	}
