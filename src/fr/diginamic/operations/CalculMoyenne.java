@@ -15,19 +15,21 @@ public class CalculMoyenne {
 
 	}
 
-	public void ajout(double val) {
+	public void ajout() {
 
 		for (int i = 0; i < 10; i++) {
-
+			
+			System.out.println("Saisissez une valeur");
+			val = scan.nextInt();
+			
 			if (i < tab.length) {
-				System.out.println("Saisissez une valeur");
-				val = scan.nextInt();
 				tab[i] = val;
 			} else if (i == tab.length) {
+
 				double[] newtab = new double[tab.length + 1];
 				for (int n = 0; n < newtab.length; n++) {
 					if (n < tab.length) {
-						newtab[n] = tab[i];
+						newtab[n] = tab[n];
 
 					} else {
 						newtab[n] = val;
