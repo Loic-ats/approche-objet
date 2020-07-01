@@ -15,8 +15,15 @@ public class Salarie extends Intervenant {
 		
 	@Override
 	public double getSalaire() {
-		double salaire = montantsalaire;
-		return salaire;
+		return montantsalaire;
 	}
+
+
+	@Override
+	public String afficherDonnees() {
+		
+		return "Le nom et le prenom du salarie est " + getNom() + " " + getPrenom() +  "," + "son statut est " + getStatut() + " son salaire est de " + montantsalaire + "€";
+	}
+	
 
 }

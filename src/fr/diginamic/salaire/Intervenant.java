@@ -2,9 +2,9 @@ package fr.diginamic.salaire;
 
 public abstract class Intervenant {
 
-	private String nom;
-	private String prenom;
-	private String statut;
+	 private String nom;
+	 private String prenom;
+	 private String statut;
 	
 	
 	//Constructeur permettant de générer un profil Pigiste ou salarié
@@ -16,6 +16,7 @@ public abstract class Intervenant {
 		
 	}
 	
+	public abstract String afficherDonnees();
 
 	public abstract double getSalaire ();
 

@@ -18,5 +18,11 @@ public class Pigiste extends Intervenant {
 		double salaire = joursdetravail * montantjournalier;
 		return salaire;
 	}
+	
+	@Override
+	public String afficherDonnees() {
+		
+		return "Le nom et le prenom du salarie est " + getNom() + " " + getPrenom() +  "," + "son statut est " + getStatut() + " son salaire est de " + getSalaire() + "€";
+	}
 
 }

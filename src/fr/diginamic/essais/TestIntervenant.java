@@ -13,6 +13,8 @@ public class TestIntervenant {
 		System.out.println(S1.getSalaire());
 		System.out.println(P1.getSalaire());
 		
+		System.out.println(S1.afficherDonnees());
+		System.out.println(P1.afficherDonnees());
 		
 	}
 
