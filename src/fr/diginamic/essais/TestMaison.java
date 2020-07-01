@@ -34,6 +34,7 @@ public class TestMaison {
 		System.out.println(maison.superficieparetage(1));
 		
 		System.out.println(maison.superficieparetypedepiece(Piece.TYPE_CUISINE));
+		System.out.println(maison.superficieparetypedepiece(Piece.TYPE_CHAMBRE));
 		
 	}
 
