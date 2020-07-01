@@ -1,10 +1,10 @@
 package fr.diginamic.essais;
 
-import fr.diginamic.formes.Forme;
 import fr.diginamic.formes.Cercle;
 import fr.diginamic.formes.Rectangle;
 import fr.diginamic.formes.Carre;
-import fr.diginamic.essais.AffichageForme;
+
+
 
 public class TestForme {
 
@@ -14,9 +14,9 @@ public class TestForme {
 		Rectangle rectangle1 = new Rectangle(2,2);
 		Carre carre1 = new Carre(3);
 					
-		AffichageForme.afficher(cercle1);
-		AffichageForme.afficher(rectangle1);
-		AffichageForme.afficher(carre1);
+		System.out.println(AffichageForme.afficher(rectangle1));
+		System.out.println(AffichageForme.afficher(cercle1));
+		System.out.println(AffichageForme.afficher(carre1));
 	}
 
 }

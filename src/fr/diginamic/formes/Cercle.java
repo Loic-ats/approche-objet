@@ -6,7 +6,6 @@ public class Cercle extends Forme {
 
 		
 	public Cercle(double rayon) {
-		super();
 		this.rayon = rayon;
 	}
 
@@ -21,10 +20,6 @@ public class Cercle extends Forme {
 		return perimetre;
 	}
 		
-	public String afficherType() {
-		
-		return "Cercle";
-	}
 	
 	//Generation des getter et des setter
 

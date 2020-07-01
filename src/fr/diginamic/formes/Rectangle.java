@@ -8,7 +8,6 @@ public class Rectangle extends Forme {
 	
 		
 	public Rectangle(double longueur, double largeur) {
-		super();
 		this.longueur = longueur;
 		this.largeur = largeur;
 	}
@@ -23,11 +22,7 @@ public class Rectangle extends Forme {
 		return perimetre;
 	}
 
-	public String afficherType() {
 		
-		return "Rectangle";
-	}
-	
 	// Generation des getter et des setter
 	
 	public double getLongueur() {
