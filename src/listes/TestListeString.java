@@ -1,6 +1,7 @@
 package listes;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class TestListeString {
 
@@ -47,5 +48,6 @@ public class TestListeString {
 		}
 
 		System.out.println(list);
+				
 	}
 }
