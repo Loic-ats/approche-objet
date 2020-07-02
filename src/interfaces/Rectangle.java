@@ -35,14 +35,6 @@ public class Rectangle implements ObjetGeometrique{
 	}
 	
 	
-	// Affichage cercle
-	
-	@Override
-	public String toString() {
-		return "Rectangle [longueur=" + longueur + ", largeur=" + largeur + "]";
-	}
-	
-	
 	
 	// Génération des getters et des setters
 

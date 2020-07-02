@@ -17,9 +17,8 @@ public class TestObjetGeometrique {
 		for(int i =0; i<=tab.length-1;i++) {
 			
 			
-			System.out.println(tab[i]);
-			
-			System.out.println("Le perimetre du " + tab[i].getType() + " est de" + tab[i].perimetre());
+				
+			System.out.println("Le perimetre du " + tab[i].getType() + " est de " + tab[i].perimetre());
 			System.out.println("La surface du " + tab[i].getType() + " est de " + tab[i].surface());
 		}
 		

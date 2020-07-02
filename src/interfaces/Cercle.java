@@ -25,22 +25,14 @@ public class Cercle implements ObjetGeometrique {
 		return rayon* rayon * Math.PI;
 	}
 	
+	
 	@Override
 	public String getType() {
 			return "CERCLE";
 	}
 	
 	
-	// Affichage Cercle
-	
-	@Override
-	public String toString() {
-		return "Cercle [rayon=" + rayon + "]";
-	}
-	
-	
 	//Generation des getters et des setters
-	
 
 
 	public double getRayon() {
