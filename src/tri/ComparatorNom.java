@@ -1,6 +1,8 @@
 package tri;
 import java.util.Comparator;
 
+import maps.Ville;
+
 public class ComparatorNom implements Comparator <Ville> {
 
 	public ComparatorNom() {

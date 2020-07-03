@@ -3,7 +3,7 @@ package listes;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import tri.Ville;
+import maps.Ville;
 
 public class TestVille {
 

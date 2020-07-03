@@ -1,6 +1,8 @@
-package tri;
+package maps;
 
 import java.util.ArrayList;
+
+//On veut comparer à  une autre ville donc dans la notation diamant on place ville
 
 public class Ville implements Comparable <Ville> {
 
@@ -45,6 +47,10 @@ public class Ville implements Comparable <Ville> {
 	return	0;
 	}
 	
+	//Autre méthode qui fonctionne également (uniquement avec int)
+	// public int compareTo (Ville autre) {
+	// return this.nbHabitant - autre.getHabitant()){
+	//}
 
 	//Generation des getter et des setter
 	

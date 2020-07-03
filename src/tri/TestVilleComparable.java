@@ -3,6 +3,8 @@ package tri;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import maps.Ville;
+
 public class TestVilleComparable {
 
 
@@ -26,6 +28,9 @@ public class TestVilleComparable {
 		
 		System.out.println(list);
 		
+		
+		System.out.println("------------------------------------------------------");
+		
 		//Afficher les villes par nombre d'habitant
 		
 		ComparatorHabitant CH = new ComparatorHabitant();
@@ -35,6 +40,10 @@ public class TestVilleComparable {
 		for (Ville v : list) {
 		System.out.println(v);
 	}
+		
+		
+		System.out.println("------------------------------------------------------");
+		
 		
 		//Afficher les villes par nombre de carractère
 		
