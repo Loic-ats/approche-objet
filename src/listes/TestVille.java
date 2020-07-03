@@ -3,6 +3,8 @@ package listes;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import tri.Ville;
+
 public class TestVille {
 
 	public TestVille() {
@@ -15,6 +17,8 @@ public class TestVille {
 		Ville villelaMoinspeuple=null;
 		String nom = "";
 
+		//On créer un tableau de l'objet ville qui contient deux paramètres le nom de la ville et le nb d'habitant
+		
 		ArrayList<Ville> list = new ArrayList<>();
 
 		list.add(new Ville("Nice", 343_000));
@@ -67,7 +71,6 @@ public class TestVille {
 				ville.setNom(ville.getNom().toUpperCase());
 				
 			}
-
 			
 		}
 		
@@ -77,6 +80,11 @@ public class TestVille {
 		for (int i= 0; i < list.size(); i++) {
 			System.out.println(list.get(i));
 		}
+		
+		//Tri des villes par le nombre des caractères (adequation avec CompareTo de la classe ville
+		
+		Collections.sort(list);
+		
 		}
 
 	}
