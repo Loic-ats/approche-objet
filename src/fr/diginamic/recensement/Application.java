@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import org.apache.commons.io.FileUtils;
 import fr.diginamic.recensement.Ville;
@@ -49,11 +50,10 @@ public class Application {
 
 	public static Ville plusPetiteVille(ArrayList<Ville> list, String codeDepartement) {
 
-		Ville villelamoinspeuplee = list.get(0);
-		
+		Ville villelamoinspeuplee = list.get(1);
+
 		for (Ville ville : list) {
-			
-					
+
 			if (ville.getCodeDepartement().equals(codeDepartement) && conversionPopulation(list,
 					ville.getPopulation()) < conversionPopulation(list, villelamoinspeuplee.getPopulation())) {
 
@@ -61,6 +61,40 @@ public class Application {
 			}
 		}
 		return villelamoinspeuplee;
+	}
+
+	// Méthode pour afficher les 10 plus grande ville du département (en nb de
+	// population)
+
+	public static Ville dixPlusGrandesVilles(ArrayList<Ville> list, String codeDepartement) {
+
+		Ville villelapluspeuplee = list.get(1);
+
+		for (Ville ville : list) {
+
+			if (ville.getCodeDepartement().equals(codeDepartement) && conversionPopulation(list,
+					ville.getPopulation()) > conversionPopulation(list, villelapluspeuplee.getPopulation())) {
+
+				villelapluspeuplee = ville;
+			}
+		}
+		return villelapluspeuplee;
+	}
+
+	// Méthode pour afficher la population totale d'une région
+
+	public static int populationRegion(ArrayList<Ville> list, String codeRegion) {
+
+		int populationregion = 0;
+
+		for (Ville ville : list) {
+			if (ville.getCodeRegion().equals(codeRegion)) {
+
+				populationregion = populationregion + conversionPopulation(list, ville.getPopulation());
+
+			}
+		}
+		return populationregion;
 	}
 
 	public static void main(String[] args) {
@@ -101,7 +135,11 @@ public class Application {
 			System.out.println(populationDepartement(list, "34"));
 
 			System.out.println("-----------------------------------------");
-
+			System.out.println(plusPetiteVille(list, "34"));
+			System.out.println("-----------------------------------------");
+			System.out.println(dixPlusGrandesVilles(list, "34"));
+			System.out.println("-----------------------------------------");
+			System.out.println(populationRegion(list, "76"));
 
 		} catch (IOException e) {
 
