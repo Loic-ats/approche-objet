@@ -20,9 +20,7 @@ public class LectureFichier {
 			
 				System.out.println("Nombre de lignes :" + lignes.size());
 
-		} catch (
-
-		IOException e) {
+		} catch  (IOException e){ 
 			System.out.println(e.getMessage());
 		}
 	}
