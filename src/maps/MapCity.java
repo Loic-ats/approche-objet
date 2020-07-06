@@ -36,22 +36,24 @@ public class MapCity {
 
 		System.out.println("----------------------------------");
 
+	
 		// Supprimer la ville qui a le moins d'habitant
 
-		int minHabitants = map.values().iterator().next().nbhabitant;
-		String villeMoinsPeuplee = "";
+		//int minHabitants = map.values().iterator().next().nbhabitant;
+		//String villeMoinsPeuplee = "";
 		
-		for (String key : map.keySet()) {
-			int nbhabitant = map.get(key).getnbhabitants();
-			if (minHabitants > nbhabitant) {
-				minHabitants = nbhabitant;
-				villeMoinsPeuplee = key;
-
-			}
+		//for (String key : map.keySet()) {
+		//	int nbhabitant = map.get(key).getnbhabitant();
+		//	if (minHabitants > nbhabitant) {
+		//		minHabitants = nbhabitant;
+		//		villeMoinsPeuplee = key;
 
 		}
-		
-		map.remove(villeMoinsPeuplee);
-		System.out.println(map);
+
 	}
-}
+
+	map.remove(villeMoinsPeuplee);System.out.println(map);
+
+	}
+
+	}
