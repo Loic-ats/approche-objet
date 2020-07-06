@@ -2,6 +2,7 @@ package tri;
 
 import java.util.Comparator;
 
+import fr.diginamic.recensement.Application;
 import maps.Ville;
 
 public class ComparatorHabitant implements Comparator<Ville> {
