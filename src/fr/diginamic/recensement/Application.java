@@ -102,7 +102,6 @@ public class Application {
 
 			System.out.println("-----------------------------------------");
 
-			System.out.println(list.get(0).toString());
 
 		} catch (IOException e) {
 
