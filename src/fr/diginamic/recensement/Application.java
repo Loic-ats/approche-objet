@@ -1,14 +1,13 @@
 package fr.diginamic.recensement;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import org.apache.commons.io.FileUtils;
-import fr.diginamic.recensement.Ville;
-import tri.ComparatorHabitant;
+
 
 public class Application {
 
@@ -64,27 +63,112 @@ public class Application {
 		return villelamoinspeuplee;
 	}
 
-	// Méthode pour afficher les 10 plus grande ville du département (en nb de
-	// population)
+	// Méthode permettant de compter les dix plus grandes ville d'un département
 
-	public static Ville laPlusGrandesVilles(ArrayList<Ville> list, String codeDepartement) {
+	public static ArrayList<Ville> dixplusgrandeville(ArrayList<Ville> list, String codeDepartement) {
 
-		Ville villelapluspeuplee = list.get(1);
+		ArrayList<Ville> dixMaxVilles = new ArrayList<>();
+		int compteur = 0;
 
-		for (Ville ville : list) {
+		// initialisation du compteur
 
-			if (ville.getCodeDepartement().equals(codeDepartement) && conversionPopulation(list,
-					ville.getPopulation()) > conversionPopulation(list, villelapluspeuplee.getPopulation())){
+		while (compteur < 10) {
+			Ville villelapluspeuplee = list.get(1);
 
-						villelapluspeuplee = ville;
-						
+			// recherche de 10 fois la ville avec la plus grande pop°
+
+			for (Ville ville : list) {
+				if (ville.getCodeDepartement().equals(codeDepartement)
+						&& conversionPopulation(list, ville.getPopulation()) > conversionPopulation(list,
+								villelapluspeuplee.getPopulation())
+						&& rechercheVille(dixMaxVilles, ville.getNomCommune()) == null) {
+
+					// permet de voir si la ville est dans le dpt, si la pop° est plus grande que
+
+					// celle enregistré, et si on l'a deja ou pas.
+
+					// le null permet de ne pas rester 10 fois sur la meme ville (montpellier pour
+					// l'herault)
+
+					villelapluspeuplee = ville;
 				}
-
-				villelapluspeuplee = ville;
 			}
-		
-		return villelapluspeuplee;
+			dixMaxVilles.add(villelapluspeuplee);
+			compteur++;
+		}
+		return dixMaxVilles;
+	}
 
+	// Méthode permettant de compter les dix plus petite ville d'un département
+
+	public static ArrayList<Ville> dixpluspetiteville(ArrayList<Ville> list, String codeDepartement) {
+
+		ArrayList<Ville> dixMinVilles = new ArrayList<>();
+		int compteur = 0;
+
+		// initialisation du compteur
+
+		while (compteur < 10) {
+			Ville villelamoinspeuplee = list.get(1);
+
+			// recherche de 10 fois la ville avec la plus grande population
+
+			for (Ville ville : list) {
+				if (ville.getCodeDepartement().equals(codeDepartement)
+						&& conversionPopulation(list, ville.getPopulation()) < conversionPopulation(list,
+								villelamoinspeuplee.getPopulation())
+						&& rechercheVille(dixMinVilles, ville.getNomCommune()) == null) {
+
+					// permet de voir si la ville est dans le dpt, si la pop° est plus petite que
+
+					// celle enregistré, et si on l'a deja ou pas.
+
+					// le null permet de ne pas rester 10 fois sur la meme ville (montpellier pour
+					// l'herault)
+
+					villelamoinspeuplee = ville;
+				}
+			}
+			dixMinVilles.add(villelamoinspeuplee);
+			compteur++;
+		}
+		return dixMinVilles;
+	}
+
+	// Méthode permettant de compter les dix plus grandes ville d'une région
+
+	public static ArrayList<Ville> dixplusgrandevilleregion(ArrayList<Ville> list, String codeRegion) {
+
+		ArrayList<Ville> dixMaxVilles = new ArrayList<>();
+		int compteur = 0;
+
+		// initialisation du compteur
+
+		while (compteur < 10) {
+			Ville villelapluspeuplee = list.get(1);
+
+			// recherche de 10 fois la ville avec la plus grande pop°
+
+			for (Ville ville : list) {
+				if (ville.getCodeRegion().equals(codeRegion)
+						&& conversionPopulation(list, ville.getPopulation()) > conversionPopulation(list,
+								villelapluspeuplee.getPopulation())
+						&& rechercheVille(dixMaxVilles, ville.getNomCommune()) == null) {
+
+					// permet de voir si la ville est dans le dpt, si la pop° est plus grande que
+
+					// celle enregistré, et si on l'a deja ou pas.
+
+					// le null permet de ne pas rester 10 fois sur la meme ville (montpellier pour
+					// l'herault)
+
+					villelapluspeuplee = ville;
+				}
+			}
+			dixMaxVilles.add(villelapluspeuplee);
+			compteur++;
+		}
+		return dixMaxVilles;
 	}
 
 	// Méthode pour afficher la population totale d'une région
@@ -102,6 +186,41 @@ public class Application {
 		}
 		return populationregion;
 	}
+
+	// Méthode permettant de compter le département le plus peuplé d'une région
+
+	public static String departementlepluspeuple(ArrayList<Ville >list , String codeRegion) {
+
+		ArrayList<String>departement = new ArrayList<>();
+		ArrayList<String>departementsansdoublon = new ArrayList<>();
+		String departementmax = null;
+		Set set = new HashSet();
+		
+		//Affiche l'ensemble des département d'une régions avec des doublons
+		for (Ville ville : list) {
+			if (ville.getCodeRegion().equals(codeRegion)) {
+				departement.add(ville.getCodeDepartement());
+			}
+			
+		//Suppresion des doublons pour garder uniquement une fois le nom du département
+			
+				set.addAll(departement);
+				departementsansdoublon = new ArrayList(set) ;
+		}
+		
+		//Comparaison de la population de chaque département afin de trouver le plus peuplé
+		
+		for (int i = 0; i < departementsansdoublon.size(); i ++ ) {
+			
+			if (populationDepartement(list, departementsansdoublon.get(1)) < populationDepartement(list, departementsansdoublon.get(i))) {
+				
+				departementmax = departementsansdoublon.get(i);
+			}
+		}
+		
+		return departementmax;
+	}
+
 
 	public static void main(String[] args) {
 
@@ -131,30 +250,24 @@ public class Application {
 
 			rechercheVille(list, "Montpellier");
 			System.out.println(rechercheVille(list, "Montpellier").toString());
-
 			System.out.println("--------------------------------------------");
-
 			System.out.println("Nombre de lignes :" + lignes.size());
-
-			System.out.println("-----------------------------------------");
-
+			System.out.println("--------------------------------------------");
 			System.out.println(populationDepartement(list, "34"));
-
-			System.out.println("-----------------------------------------");
+			System.out.println("---------------------------------------------");
 			System.out.println(plusPetiteVille(list, "34"));
-			System.out.println("-----------------------------------------");
-			System.out.println(laPlusGrandesVilles(list, "34"));
-			System.out.println("-----------------------------------------");
+			System.out.println("----------------------------------------------");
+			System.out.println(dixplusgrandeville(list, "34"));
+			System.out.println("----------------------------------------------");
+			System.out.println(dixpluspetiteville(list, "34"));
+			System.out.println("----------------------------------------------");
 			System.out.println(populationRegion(list, "76"));
-			
-			
-			//Afficher les villes par nombre d'habitant
-			
-			ComparatorPopulation CH = new ComparatorPopulation();
-			Collections.sort(list,CH);
-			for (Ville v : list) {
-			System.out.println(v);
-		}
+			System.out.println("----------------------------------------------");
+			System.out.println(dixplusgrandevilleregion(list, "76"));
+			System.out.println("----------------------------------------------");
+			System.out.println(departementlepluspeuple(list, "76"));
+
+			// Trier la liste par ordre croissant en fonction du nombre de population
 
 		} catch (IOException e) {
 
