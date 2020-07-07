@@ -1,4 +1,5 @@
 package fr.diginamic.recensement;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,7 +8,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
-
 
 public class Application {
 
@@ -30,6 +30,21 @@ public class Application {
 
 		return populationTotale;
 	}
+	
+	// Méthode permettant de retrouver la population total d'une ville
+		public static int populationVille(ArrayList<Ville> list, String codeCommune) {
+
+			int populationville = 0;
+
+			for (Ville ville : list) {
+				if (ville.getCodeCommune().equals(codeCommune)) {
+
+					populationville = populationville + conversionPopulation(list, ville.getPopulation());
+
+				}
+			}
+			return populationville;
+		}
 
 	// Méthode permettant de retrouver la population total d'un département
 	public static int populationDepartement(ArrayList<Ville> list, String codeDepartement) {
@@ -189,39 +204,178 @@ public class Application {
 
 	// Méthode permettant de compter le département le plus peuplé d'une région
 
-	public static String departementlepluspeuple(ArrayList<Ville >list , String codeRegion) {
+	public static String departementlepluspeuple(ArrayList<Ville> list, String codeRegion) {
 
-		ArrayList<String>departement = new ArrayList<>();
-		ArrayList<String>departementsansdoublon = new ArrayList<>();
+		ArrayList<String> departement = new ArrayList<>();
+		ArrayList<String> departementsansdoublon = new ArrayList<>();
 		String departementmax = null;
 		Set set = new HashSet();
-		
-		//Affiche l'ensemble des département d'une régions avec des doublons
+
+		// Affiche l'ensemble des département d'une régions avec des doublons
 		for (Ville ville : list) {
 			if (ville.getCodeRegion().equals(codeRegion)) {
 				departement.add(ville.getCodeDepartement());
 			}
-			
-		//Suppresion des doublons pour garder uniquement une fois le nom du département
-			
-				set.addAll(departement);
-				departementsansdoublon = new ArrayList(set) ;
+
+			// Suppresion des doublons pour garder uniquement une fois le nom du département
+
+			set.addAll(departement);
+			departementsansdoublon = new ArrayList(set);
 		}
-		
-		//Comparaison de la population de chaque département afin de trouver le plus peuplé
-		
-		for (int i = 0; i < departementsansdoublon.size(); i ++ ) {
-			
-			if (populationDepartement(list, departementsansdoublon.get(1)) < populationDepartement(list, departementsansdoublon.get(i))) {
-				
+
+		// Comparaison de la population de chaque département afin de trouver le plus
+		// peuplé
+
+		for (int i = 0; i < departementsansdoublon.size(); i++) {
+
+			if (populationDepartement(list, departementsansdoublon.get(1)) < populationDepartement(list,
+					departementsansdoublon.get(i))) {
+
 				departementmax = departementsansdoublon.get(i);
 			}
 		}
-		
+
 		return departementmax;
 	}
 
+	// Methode pour afficher les 10 régions les pleuplées de france
 
+	public static ArrayList<String> dixregionlespluspeuplee(ArrayList<Ville> list) {
+
+		ArrayList<String> dixMaxRegion = new ArrayList<>();
+		int compteur = 0;
+
+		// Rechercher l'ensemble des codes regions de france
+
+		ArrayList<String> region = new ArrayList<>();
+		ArrayList<String> regionsansdoublon = new ArrayList<>();
+		ArrayList<String> sauvegarderegion = new ArrayList<>();
+		Set set = new HashSet();
+		for (Ville ville : list) {
+			region.add(ville.getCodeRegion());
+		}
+
+		// Suppresion des doublons pour avoir une seule fois le code du département
+		set.addAll(region);
+		regionsansdoublon = new ArrayList(set);
+
+		// Initialisation du compteur
+		while (compteur < 10) {
+			String regionlapluspeuplee = regionsansdoublon.get(0);
+			int popregionlapluspeuplee = 0;
+
+			// Recherche des dix régions les plus peuplées en fonction du code région
+			// contenus dans regionsansdoublon
+
+			for (int i = 0; i < regionsansdoublon.size(); i++) {
+
+				if (popregionlapluspeuplee < populationRegion(list,
+						regionsansdoublon.get(i)) && !sauvegarderegion.contains(regionsansdoublon.get(i))) {
+
+					popregionlapluspeuplee= populationRegion(list, regionsansdoublon.get(i));
+					regionlapluspeuplee = regionsansdoublon.get(i);
+				}
+			}
+			dixMaxRegion.add(regionlapluspeuplee);
+			sauvegarderegion.add(regionlapluspeuplee);
+			compteur++;
+
+		}
+		return dixMaxRegion;
+	}
+	
+	// Methode pour afficher les 10 départements les pleuplés de france
+
+		public static ArrayList<String> dixdepartementlespluspeuplee(ArrayList<Ville> list) {
+
+			ArrayList<String> dixMaxDepartement = new ArrayList<>();
+			int compteur = 0;
+
+			// Rechercher l'ensemble des codes regions de france
+
+			ArrayList<String> departement = new ArrayList<>();
+			ArrayList<String> departementsansdoublon = new ArrayList<>();
+			ArrayList<String> sauvegardedepartement = new ArrayList<>();
+			Set set = new HashSet();
+			for (Ville ville : list) {
+				departement.add(ville.getCodeDepartement());
+			}
+
+			// Suppresion des doublons pour avoir une seule fois le code du département
+			set.addAll(departement);
+			departementsansdoublon = new ArrayList(set);
+
+			// Initialisation du compteur
+			while (compteur < 10) {
+				String departementlepluspeuplee = departementsansdoublon.get(0);
+				int popdepartementlepluspeuplee = 0;
+
+				// Recherche des dix régions les plus peuplées en fonction du code région
+				// contenus dans regionsansdoublon
+
+				for (int i = 0; i < departementsansdoublon.size(); i++) {
+
+					if (popdepartementlepluspeuplee < populationDepartement(list,
+							departementsansdoublon.get(i)) && !sauvegardedepartement.contains(departementsansdoublon.get(i))) {
+
+						popdepartementlepluspeuplee= populationDepartement(list, departementsansdoublon.get(i));
+						departementlepluspeuplee = departementsansdoublon.get(i);
+					}
+				}
+				dixMaxDepartement.add(departementlepluspeuplee);
+				sauvegardedepartement.add(departementlepluspeuplee);
+				compteur++;
+
+			}
+			return dixMaxDepartement;
+		}
+
+		// Methode pour afficher les 10 villes les pleuplées de France
+
+		public static ArrayList<String> dixvillelespluspeuplee(ArrayList<Ville> list) {
+
+			ArrayList<String> dixMaxVille = new ArrayList<>();
+			int compteur = 0;
+
+			// Rechercher l'ensemble des codes regions de france
+
+			ArrayList<String> city = new ArrayList<>();
+			ArrayList<String> villesansdoublon = new ArrayList<>();
+			ArrayList<String> sauvegardeville = new ArrayList<>();
+			Set set = new HashSet();
+			for (Ville ville : list) {
+				city.add(ville.getCodeCommune());
+			}
+
+			// Suppresion des doublons pour avoir une seule fois le code du département
+			set.addAll(city);
+			villesansdoublon = new ArrayList(set);
+
+			// Initialisation du compteur
+			while (compteur < 10) {
+				String villelapluspeuplee = villesansdoublon.get(0);
+				int popvillelapluspeuplee = 0;
+
+				// Recherche des dix régions les plus peuplées en fonction du code région
+				// contenus dans regionsansdoublon
+
+				for (int i = 0; i < villesansdoublon.size(); i++) {
+
+					if (popvillelapluspeuplee < populationVille(list,
+							villesansdoublon.get(i)) && !sauvegardeville.contains(villesansdoublon.get(i))) {
+
+						popvillelapluspeuplee= populationVille(list, villesansdoublon.get(i));
+						villelapluspeuplee = villesansdoublon.get(i);
+					}
+				}
+				dixMaxVille.add(villelapluspeuplee);
+				sauvegardeville.add(villelapluspeuplee);
+				compteur++;
+
+			}
+			return dixMaxVille;
+		}
+		
 	public static void main(String[] args) {
 
 		try {
@@ -247,6 +401,9 @@ public class Application {
 				list.add(v);
 
 			}
+			
+			//Permet de supprimer la première ligne du fichier csv qui contient les titres les colonnes et pas les valeurs.
+			list.remove(0);
 
 			rechercheVille(list, "Montpellier");
 			System.out.println(rechercheVille(list, "Montpellier").toString());
@@ -266,6 +423,13 @@ public class Application {
 			System.out.println(dixplusgrandevilleregion(list, "76"));
 			System.out.println("----------------------------------------------");
 			System.out.println(departementlepluspeuple(list, "76"));
+			System.out.println("----------------------------------------------");
+			System.out.println(dixregionlespluspeuplee(list));
+			System.out.println("----------------------------------------------");
+			System.out.println(dixdepartementlespluspeuplee(list));
+			System.out.println("----------------------------------------------");
+			System.out.println(dixvillelespluspeuplee(list));
+
 
 			// Trier la liste par ordre croissant en fonction du nombre de population
 
