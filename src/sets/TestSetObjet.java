@@ -73,8 +73,9 @@ public class TestSetObjet {
 				
 			}
 
-			paysePIBtotalsmall.getNom().toUpperCase();
-				
+			String nomEnMaj =  paysePIBtotalsmall.getNom().toUpperCase();
+				paysePIBtotalsmall.setNom(nomEnMaj);
+			
 			}
 			
 		
@@ -82,9 +83,9 @@ public class TestSetObjet {
 		
 		set.remove(paysePIBtotalsmall);
 		
+		
 		System.out.println(PIBtotalesmall);
 		System.out.println(paysePIBtotalsmall);
-		System.out.println(paysePIBtotalsmall.getNom().toUpperCase());
 		System.out.println(set);
 
 	}
