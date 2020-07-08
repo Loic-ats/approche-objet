@@ -25,10 +25,10 @@ public class MapCity {
 
 		// Copier l'ArrayList "list" dans la HashMap "map"
 
-		HashMap<Ville, String> map = new HashMap<>();
+		HashMap<String, Ville> map = new HashMap<>();
 
 		for (Ville ville : list) {
-			map.put(ville, ville.getNom());
+			map.put(ville.getNom(), ville);
 
 		}
 
@@ -36,24 +36,22 @@ public class MapCity {
 
 		System.out.println("----------------------------------");
 
-	
 		// Supprimer la ville qui a le moins d'habitant
 
-		//int minHabitants = map.values().iterator().next().nbhabitant;
-		//String villeMoinsPeuplee = "";
-		
-		//for (String key : map.keySet()) {
-		//	int nbhabitant = map.get(key).getnbhabitant();
-		//	if (minHabitants > nbhabitant) {
-		//		minHabitants = nbhabitant;
-		//		villeMoinsPeuplee = key;
+		int minHabitants = map.values().iterator().next().getNbhabitants();
+		Ville villeMoinsPeuplee = null;
 
+		for (String key : map.keySet()) {
+			int nbhabitant = map.get(key).getNbhabitants();
+			if (minHabitants > nbhabitant) {
+				minHabitants = nbhabitant;
+				villeMoinsPeuplee = map.get(key);
+			}
 		}
 
-	}
-
-	map.remove(villeMoinsPeuplee);System.out.println(map);
-
-	}
+		map.remove(villeMoinsPeuplee);
+		System.out.println(map);
 
 	}
+
+}
