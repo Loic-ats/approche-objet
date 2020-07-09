@@ -19,7 +19,7 @@ public class TestSetObjet {
 		set.add(new Pays ("Chine", 1_393_000_000,9770.83));
 		set.add(new Pays ("Russie", 144_500_000,1128.87));
 		set.add(new Pays ("Inde", 1_353_000_000,2009.98));
-
+		
 		//Rechercher le Pays avec le PIB/Habitant le plus important
 		
 		double PIBtop = 0.0;
@@ -38,7 +38,7 @@ public class TestSetObjet {
 		System.out.println(PIBtop);
 		System.out.println(paysetop);
 		
-		//Recherche le Pays avec le PIB total d'un pays (on aurait pu créer une méthode dans la classe pays et l'invoquer ici)
+		//Recherche le Pays avec le PIB total d'un pays (on aurait pu crï¿½er une mï¿½thode dans la classe pays et l'invoquer ici)
 		
 		double PIBtotaletop = 0.0;
 		Pays paysePIBtotaltop= null;
@@ -83,11 +83,17 @@ public class TestSetObjet {
 		
 		set.remove(paysePIBtotalsmall);
 		
+		//Test de la mÃ©thode equals
+	
+		paysePIBtotalsmall.equals(paysePIBtotaltop);
 		
 		System.out.println(PIBtotalesmall);
 		System.out.println(paysePIBtotalsmall);
 		System.out.println(set);
+		System.out.println(paysePIBtotalsmall.getNom()==(paysePIBtotaltop.getNom()));
+		System.out.println(paysePIBtotalsmall.equals(paysePIBtotaltop)) ;
 
+		
 	}
 
 }
