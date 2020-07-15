@@ -3,11 +3,12 @@ import java.lang.reflect.*;
 
 public class ReflectionUtils {
 
-	public static void afficherAttributs(Object obj) throws IllegalArgumentException, IllegalAccessException, Exception {
+	public static void afficherAttributs(Object obj) throws IllegalArgumentException, IllegalAccessException, ReflectionException {
 
 		if( obj == null) {
-			throw new Exception("L'objet rentrer en parametre n'est pas correct");
+			throw new ReflectionException("L'objet rentrer en parametre n'est pas correct");
 		}
+
 // On commence par récupérer la classe de l'objet passée en paramètre.
 // la classe fournit toutes les informations sur la structure d'un objet.
 		Class<?> classe = obj.getClass();
